@@ -11,13 +11,11 @@ include("inc/head.inc.php");
   </div>
 </nav>
 <?php 
-// Ambil ID resep dari URL
-$recipeId = $_GET["id"];
+$recipeId = htmlspecialchars($_GET["id"]);
 
-// Buat query SQL untuk mendapatkan informasi resep berdasarkan ID
-$sql = "SELECT * FROM recipe WHERE id = $recipeId";
+$sql = "SELECT name, material FROM recipe WHERE id = $recipeId";
 $recipe = $conn->query($sql);
-$recipee = $conn->query("SELECT * FROM recipe WHERE id = $recipeId");
+$recipee = $conn->query("SELECT name, material FROM recipe WHERE id = $recipeId");
 while($exee = $recipee->fetch_object()){
     echo '<center>
     <h2>'.$exee->name.'</h2>
