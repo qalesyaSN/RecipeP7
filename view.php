@@ -33,15 +33,15 @@ while($exee = $recipee->fetch_object()){
     <tbody>
 <?php
 while($exe = $recipe->fetch_object()){
-    echo '<title>:: Recipe '.$exe->name.'</title>';
-    $pattern = explode("\n",$exe->material);
+    echo '<title>:: Recipe '.htmlspecialchars($exe->name).'</title>';
+    $pattern = explode("\n", htmlspecialchars($exe->material));
     foreach ($pattern as $data){
         echo "<tr>";
         $pattern1 = explode(",",$data);
         
         //var_dump($data);
-        echo "<td>".$pattern1[0]."</td>";
-        echo "<td><center>".$pattern1[1]."</center></td>";
+        echo "<td>".htmlspecialchars($pattern1[0])."</td>";
+        echo "<td><center>".htmlspecialchars($pattern1[1])."</center></td>";
         echo "</tr>";
     }
     
