@@ -3,11 +3,9 @@
 <?php
 include("inc/head.inc.php");
 $searchQuery = $conn->real_escape_string($_POST["query"] ?? '');
-
     $sql = "SELECT id, name FROM recipe WHERE name LIKE '%$searchQuery%' ORDER BY name ASC";
-
     $result = $conn->query($sql);
-
+   
     // Tampilkan hasil pencarian
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
